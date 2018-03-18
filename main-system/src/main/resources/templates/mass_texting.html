@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>layui.form小例子</title>
+    <script src="/layui/layui.js"></script>
+    <script src="/js/jquery-1.9.1.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <!--<script src="/layui/layui.all.js"></script>-->
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script type="text/javascript">
+        layui.use('form', function () {
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+            form.render();
+        });
+    </script>
 </head>
 <body>
+<form class="layui-form layui-form-pane" action="">
+    <div>
+        短信群发
+        <div style="margin: 18px;">
+            <button class="layui-btn" style="background:#00a0ff;" lay-submit="" lay-filter="demo1">返回群发记录</button>
+            <div style="margin-left: 100px; margin-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style=" border: none;background: white;">发送账号</label>
+                    <div class="layui-input-inline">
+                        <select name="quiz1">
+                            <option value="">请选择省</option>
+                            <option value="浙江" selected="">浙江省</option>
+                            <option value="你的工号">江西省</option>
+                            <option value="你最喜欢的老师">福建省</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin: 18px; " >
+                    短信类型：<label>支持发送通知类以及会员营销类短信</label>
+                </div>
+                <div>
+                    <div class="layui-form-item" style=" border: none;background: white;" pane="">
+                        <label class="layui-form-label" style=" border: none;background: white;">发送手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="sex" value="manual" title="手动添加" checked="">
+                            <input type="radio" name="sex" value="Excel" title="Excel导入">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text" style="width:500px;margin-top: 18px;     margin-left: 100px; ">
+                    <div class="layui-input-block" >
+                        <textarea placeholder="可编写多个手机号码，用换行，逗号或者空格分开" class="layui-textarea"></textarea>
+                    </div>
+                    <div style="background: #F2F2F2;padding: 10px;">当前有效手机共0个 <label
+                            onclick="$('#notice').click(); ">?</label></div>
+                    <div hidden class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                        <input data-method="notice" hidden id="notice" class="layui-btn" th:value="示范一个公告层"/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style=" border: none;background: white;">短信签名</label>
+                    <div class="layui-input-inline">
+                        <select name="quiz1">
+                            <option value="">请选择省</option>
+                            <option value="浙江" selected="">浙江省</option>
+                            <option value="你的工号">江西省</option>
+                            <option value="你最喜欢的老师">福建省</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text" style="width:500px;margin-top: 18px;margin-left: 100px; ">
+                    <label class="layui-form-label" style=" border: none;background: white;">发送内容</label>
+                    <div class="layui-input-block" >
+                        <textarea placeholder="输入短信内容" class="layui-textarea"></textarea>
+                    </div>
+                    <div style="background: #F2F2F2;padding: 10px;">当前有效手机共0个 <label
+                            onclick="$('#notice').click(); ">?</label></div>
+                    <div hidden class="site-demo-button" style="margin-bottom: 0;">
+                        <input data-method="notice" hidden id="msg_notice" class="layui-btn" th:value="示范一个公告层"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+<script>
+    layui.use('layer', function () { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+        var active = {
+            notice: function () {
+                //示范一个公告层
+                layer.open({
+                    type: 1,
+                    title: false //不显示标题栏
+                    , closeBtn: false
+                    , area: '300px;'
+                    , shade: 0.8,
+                    id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    , btn: ['确定'],
+                    btnAlign: 'c',
+                    moveType: 1 //拖拽模式，0或者1
+                    ,
+                    content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你知道吗？亲！<br>layer ≠ layui<br><br>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui<br><br>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。<br><br>我们此后的征途是星辰大海 ^_^</div>'
+                    ,
+                    success: function (layero) {
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            target: '_blank'
+                        });
+                    }
+                });
+            }
+        };
+        $('#layerDemo .layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
 
+    });
+</script>
 </body>
 </html>

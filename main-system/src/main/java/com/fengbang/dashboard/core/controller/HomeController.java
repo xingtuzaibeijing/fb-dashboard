@@ -59,7 +59,7 @@ public class HomeController {
     @RequestMapping(value = "/mass_texting", method = RequestMethod.GET)
     public String massTexting(Model model) {
         model.addAttribute("");
-        return "a";
+        return "mass_texting";
     }
     /**
      * @param menu
