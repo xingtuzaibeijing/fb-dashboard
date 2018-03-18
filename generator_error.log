@@ -1,0 +1,110 @@
+java.lang.RuntimeException: generate oucur error,templateFile is:main-system\src\main\resources\templates\console\${tableNameNewLowerCase!classNameLower}\from.html => D:\xiangmu\FBZL\fb-dashboard\main-system\src\main\resources\templates\console\menu\from.html cause:freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> column.id  [in template "main-system\\src\\main\\resources\\templates\\console\\${tableNameNewLowerCase!classNameLower}\\from.html" at line 25, column 81]
+
+----
+Tip: It's the step after the last dot that caused this error, not those before it.
+----
+Tip: If the failing expression is known to be legally refer to something that's null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${column.id}  [in template "main-system\\src\\main\\resources\\templates\\console\\${tableNameNewLowerCase!classNameLower}\\from.html" at line 25, column 79]
+----
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator$TemplateProcessor.executeGenerate(Generator.java:352)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator$TemplateProcessor.access$100(Generator.java:307)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator.scanTemplatesAndProcess(Generator.java:287)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator.processTemplateRootDirs(Generator.java:215)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator.generateBy(Generator.java:177)
+	at com.fengbang.genrate.code.rapid_framework.generator.GeneratorFacade$ProcessUtils.processByTable(GeneratorFacade.java:286)
+	at com.fengbang.genrate.code.rapid_framework.generator.GeneratorFacade$ProcessUtils.processByTable(GeneratorFacade.java:252)
+	at com.fengbang.genrate.code.rapid_framework.generator.GeneratorFacade.generateByTable(GeneratorFacade.java:131)
+	at com.fengbang.genrate.app.CodeGenFBFrameworkOracle.run(CodeGenFBFrameworkOracle.java:100)
+	at com.fengbang.dashboard.core.controller.GeneratorCodeController.generatorCode(GeneratorCodeController.java:50)
+	at sun.reflect.GeneratedMethodAccessor343.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:114)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:89)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:108)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: freemarker.core.InvalidReferenceException: The following has evaluated to null or missing:
+==> column.id  [in template "main-system\\src\\main\\resources\\templates\\console\\${tableNameNewLowerCase!classNameLower}\\from.html" at line 25, column 81]
+
+----
+Tip: It's the step after the last dot that caused this error, not those before it.
+----
+Tip: If the failing expression is known to be legally refer to something that's null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${column.id}  [in template "main-system\\src\\main\\resources\\templates\\console\\${tableNameNewLowerCase!classNameLower}\\from.html" at line 25, column 79]
+----
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:108)
+	at freemarker.core.EvalUtil.coerceModelToString(EvalUtil.java:346)
+	at freemarker.core.Expression.evalAndCoerceToString(Expression.java:80)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:40)
+	at freemarker.core.Environment.visit(Environment.java:257)
+	at freemarker.core.MixedContent.accept(MixedContent.java:57)
+	at freemarker.core.Environment.visitByHiddingParent(Environment.java:278)
+	at freemarker.core.IfBlock.accept(IfBlock.java:48)
+	at freemarker.core.Environment.visitByHiddingParent(Environment.java:278)
+	at freemarker.core.IteratorBlock$Context.runLoop(IteratorBlock.java:157)
+	at freemarker.core.Environment.visitIteratorBlock(Environment.java:501)
+	at freemarker.core.IteratorBlock.accept(IteratorBlock.java:67)
+	at freemarker.core.Environment.visit(Environment.java:257)
+	at freemarker.core.MixedContent.accept(MixedContent.java:57)
+	at freemarker.core.Environment.visit(Environment.java:257)
+	at freemarker.core.Environment.process(Environment.java:235)
+	at freemarker.template.Template.process(Template.java:262)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator$TemplateProcessor.processTemplateForGeneratorControl(Generator.java:387)
+	at com.fengbang.genrate.code.rapid_framework.generator.Generator$TemplateProcessor.executeGenerate(Generator.java:339)
+	... 63 more

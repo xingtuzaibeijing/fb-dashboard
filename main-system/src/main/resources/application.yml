@@ -1,0 +1,51 @@
+#端口
+server:
+  port: 8070
+#项目名称
+spring:
+  application:
+    name: dashboard
+#图标
+  datasource:
+    url: jdbc:mysql://172.16.15.39/fb_dashboard
+    username: fbzl
+    password: fbzl
+    driver-class-name: com.mysql.jdbc.Driver
+  #配置静态文件
+  resources:
+    static-locations: /META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+  #thymeleaf
+  thymeleaf:
+    cache: false # Enable template caching.
+    encoding: UTF-8 # Template files encoding.
+    mode: LEGACYHTML5 # Template mode to be applied to templates. See also StandardTemlateModeHandlers.
+    prefix: classpath:/templates/ # Prefix that gets prepended to view names when building a URL.
+#oralcep
+custom:
+  datasource:
+    names: ds1
+    ds1:
+      url: jdbc:oracle:thin:@172.16.10.225:1521:FBZL
+      username: FBZLKF
+      password: FBZLKF
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+mybatis:
+  type-aliases-package: com.fengbang.dashboard.core.entity,com.fengbang.dashboard.core.entity.flow
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+    jdbc-type-for-null: varchar
+
+
+mapper:
+    mappers:
+        - com.fengbang.dashboard.core.config.BaseDao
+    not-empty: false
+    before: true
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

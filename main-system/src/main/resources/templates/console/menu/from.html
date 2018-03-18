@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="console/header">
+</head>
+<body>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title" th:text="'资源'+${pageType=='add'?'添加':'修改'}"></h3>
+                </div>
+                <div class="box-body">
+                    <form  class="form-horizontal js-ajax-form"
+                          th:action="${pageType=='update'?'/menu/change_menu':'/menu/add_menu'}"
+                          method="post">
+                            <input type="hidden" name="menuName"
+                                   th:value="${menu.menuName}"/>
+                            <input type="hidden" name="menuSuperior"
+                                   th:value="${menu.menuSuperior}"/>
+                            <input type="hidden" name="menuType"
+                                   th:value="${menu.menuType}"/>
+                            <input type="hidden" name="id"
+                                   th:value="${menu.id}"/>
+                            <input type="hidden" name="menuResource"
+                                   th:value="${menu.menuResource}"/>
+                            <input type="hidden" name="menuRank"
+                                   th:value="${menu.menuRank}"/>
+                            <input type="hidden" name="creator"
+                                   th:value="${menu.creator}"/>
+                            <input type="hidden" name="updater"
+                                   th:value="${menu.updater}"/>
+                            <input type="hidden" name="remark"
+                                   th:value="${menu.remark}"/>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">资源名称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="menuName" class="form-control"
+                                                   id="menuName" th:value="${menu.menuName}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">上级菜单id</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="menuSuperior" class="form-control"
+                                                   id="menuSuperior" th:value="${menu.menuSuperior}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">菜单类型</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="menuType" class="form-control"
+                                                   id="menuType" th:value="${menu.menuType}"/>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">菜单ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="menuId" class="form-control"
+                                               id="menuId" th:value="${menu.id}"/>
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">菜单资源</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="menuResource" class="form-control"
+                                                   id="menuResource" th:value="${menu.menuResource}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">排序</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="menuRank" class="form-control"
+                                                   id="menuRank" th:value="${menu.menuRank}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">创建用户</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="creator" class="form-control"
+                                                   id="creator" th:value="${menu.creator}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">修改人员</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="updater" class="form-control"
+                                                   id="updater" th:value="${menu.updater}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">备注</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="remark" class="form-control"
+                                                   id="remark" th:value="${menu.remark}"/>
+                                        </div>
+                                    </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default js-ajax-submit">提交
+                                    </button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:insert="console/footer">
+</div>
+</body>
+</html>
